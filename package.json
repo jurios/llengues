@@ -1,6 +1,6 @@
 {
   "name": "llengues",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -11,6 +11,7 @@
     "build": "npm run clean && tsc -p tsconfig.json",
     "build:watch": "npm run clean && tsc -w -p tsconfig.build.json",
     "build:prod": "npm run clean && tsc -p tsconfig.build.json",
+    "publish:npm": "npm run build:prod && npm publish",
     "format": "prettier \"src/**/*.ts\"",
     "format:check": "npm run format -- --check",
     "format:fix": "npm run format -- --write",
