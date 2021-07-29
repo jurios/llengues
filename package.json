@@ -1,0 +1,81 @@
+{
+  "name": "llengues",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "llengues": "dist/cli/cli.js"
+  },
+  "scripts": {
+    "clean": "rm -fr dist/",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "build:watch": "npm run clean && tsc -w -p tsconfig.build.json",
+    "build:prod": "npm run clean && tsc -p tsconfig.build.json",
+    "format": "prettier \"src/**/*.ts\"",
+    "format:check": "npm run format -- --check",
+    "format:fix": "npm run format -- --write",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:check": "npm run lint",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run clean && jest",
+    "test:watch": "npm run clean && jest --watch",
+    "test:cov": "npm run clean && jest --coverage",
+    "test:e2e": "npm run clean && jest --config ./tests/integration/jest-e2e.json",
+    "checks": "npm run lint:check && npm run format:check && npm run build && npm run test && npm run test:e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurios/llengues.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurios/llengues/issues"
+  },
+  "homepage": "https://github.com/jurios/llengues#readme",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^26.0.20",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "express": "^4.17.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "supertest": "^6.1.3",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "./tests/playground.ts"
+    ]
+  },
+  "dependencies": {
+    "@typescript-eslint/typescript-estree": "^4.28.3",
+    "artesa": "^0.4.3",
+    "glob": "^7.1.7"
+  }
+}
