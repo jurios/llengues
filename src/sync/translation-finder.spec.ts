@@ -97,5 +97,19 @@ describe(TranslationFinder.name, () => {
 
       expect(translationsMetadata).toHaveLength(0);
     });
+
+    it('should handle VariableDeclaration node without init', async () => {
+      jest.spyOn(fs, 'readFile').mockImplementation(async () => {
+        return 'let app: TestingModule';
+      });
+
+      const translationsMetadata: TranslationMetadata[] = await TranslationFinder.find(
+        ['file'],
+        'tr',
+        'package',
+      );
+
+      expect(translationsMetadata).toHaveLength(0);
+    });
   });
 });

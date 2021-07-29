@@ -105,6 +105,7 @@ export class TranslationFinder {
       if (
         funcName === null &&
         node.type === AST_NODE_TYPES.VariableDeclarator &&
+        node.init &&
         node.init.type === AST_NODE_TYPES.MemberExpression &&
         node.init.object.type === AST_NODE_TYPES.CallExpression &&
         ((node.init.object as TSESTree.CallExpression).callee as TSESTree.Identifier).name ===
